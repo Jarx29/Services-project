@@ -15,11 +15,11 @@ class UserAdmin(BaseUser):
         (_('Info personal'),{'fields': ('nombre','apellidoP','apellidoM','telefono')}),
         (_('Permisos'), {'fields': ('is_active','is_staff','is_superuser')})
     )
-    add_fieldsets = (
+    add_fieldsets = [
         (None,{
             'classes': ('wide',),
             'fields': ('username','email','telefono', 'password1', 'password2')
         })
-    )
+    ]
 
 admin.site.register(models.User, UserAdmin)
