@@ -6,8 +6,8 @@
     <div class="container">
       <div class="row text-center">
         <div class="col-md-12">
-          <h1 class="display-4">Lista De Servicios</h1>
-          <p class="lead">Estos son los servicios publicados actualmente</p>
+          <h1 class="display-4">Servicios Destacados</h1>
+          <p class="lead">Los mejores en una sola sección</p>
         </div>
       </div>
     </div>
@@ -51,22 +51,22 @@
               <hr>
               <div class="row py-2 text-secondary">
                 <div class="col-8">
-                  <i class="fas fa-th-large"></i> Category:{{listing.category}}
+                  <i class="fas fa-th-large"></i> Categoría: {{listing.category}}
                 </div>
               </div>
               <div class="row py-2 text-secondary">
                 <div class="col-8">
-                  <i class="fas fa-user"></i> Owner:{{listing.owner.first_name}}
+                  <i class="fas fa-user"></i> Proveedor: {{listing.owner.first_name}}
                 </div>
                 </div>
                 <div class="row py-2 text-secondary">
                 <div class="col-8">
-                  <i class="fas fa-phone"></i> Phone:{{listing.owner.phone}}
+                  <i class="fas fa-phone"></i> Celular: {{listing.owner.phone}}
                 </div>
                 </div>
                 <div class="row py-2 text-secondary">
               <div class="col-10">
-                <i class="fas fa-envelope"></i> Email:{{listing.owner.email}}
+                <i class="fas fa-envelope"></i> Email: {{listing.owner.email}}
                 </div>
             </div>
             </div>
@@ -76,7 +76,7 @@
                   <i class="fas fa-clock"></i>   {{listing.list_date | timesince }}</div>
               </div>
               <hr>
-              <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+              <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">Detalles</a>
           </div>
         </div>
         {% endfor %}
