@@ -36,13 +36,8 @@
                 <label class="sr-only">Rating</label>
                 <select name="category" class="form-control">
                   <option selected="true" disabled="disabled">Rating (Todos)</option>
-                  {% for key,value in category_choices.items %}
-                    <option value="{{key}}"
-                    {% if key == values.category %}
-                    selected
-                    {% endif %}
-                    >{{value}}</option>
-                    {%endfor%}
+                
+                   
                 </select>
               </div>
               <div class="col-md-6 mb-3">

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from Core.models import User
 from django.contrib import messages
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate, logout
 from django.core.mail import send_mail
 
 
@@ -114,3 +114,24 @@ def confirmregister(request):
             return render(request, 'accounts/confirmregister.html', context)
     else:
         return redirect('register')        
+
+def userlogin(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            login(request, user)
+            messages.success(request, 'Inicio de sesion exitoso')
+            return redirect('index')
+        else:
+            messages.error(request, 'contraseña o usuario incorrecto')
+            return redirect('login')
+    else:
+        return render(request, 'accounts/login.html')
+
+def userlogout(request):
+    if request.method == 'POST':
+        logout(request)
+        messages.success(request, 'Sesion cerrada exitosamente')
+        return redirect('login')
