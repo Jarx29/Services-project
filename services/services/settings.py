@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'Core',
     'listings',
+    'accounts',
     
 ]
 
@@ -134,3 +135,15 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'Core.User'
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+    messages.SUCCESS: 'success',
+}
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'diamondsoftwaresolutions4@gmail.com'
+EMAIL_HOST_PASSWORD = 'chulnsffogixyguq'
+EMAIL_USE_TLS = True
