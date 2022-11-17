@@ -43,7 +43,14 @@ INSTALLED_APPS = [
     'Core',
     'listings',
     'accounts',
-    
+
+    'crispy_forms',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 ]
 
 MIDDLEWARE = [
@@ -142,8 +149,77 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success',
 }
 
+#Enviar corre
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'diamondsoftwaresolutions4@gmail.com'
 EMAIL_HOST_PASSWORD = 'chulnsffogixyguq'
 EMAIL_USE_TLS = True
+
+
+#Google
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    
+]
+#668449700605-fcrk48jsp1rmtko99cssqpnbhbg1bmr0.apps.googleusercontent.com
+
+#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
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    },
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': True},
+        'FIELDS': [
+            'id',
+            'first_name',
+            'last_name',
+            'middle_name',
+            'name',
+            'name_format',
+            'picture',
+            'short_name'
+        ],
+        'EXCHANGE_TOKEN': True,
+        # 'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v7.0',
+    }
+}
+
+LOGIN_REDIRECT_URL = 'index'
+LOGIN_REDIRECT_URL = 'login'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+#{% provider_login_url provider.id openid=brand.openid_url process=process %}
+#{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}
+#<!--href={% url 'account_reset_password' %}-->
+SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
+
+ACCOUNT_EMAIL_REQUIRED = True
+
+SOCIALACCOUNT_QUERY_EMAIL = True
+
+ACCOUNT_SESSION_REMEMBER = True
