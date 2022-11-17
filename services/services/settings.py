@@ -176,8 +176,7 @@ SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
             'profile',
-            'email',
-            'nickname',
+            'email'
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
