@@ -177,6 +177,7 @@ SOCIALACCOUNT_PROVIDERS = {
         'SCOPE': [
             'profile',
             'email',
+            'nickname',
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
@@ -224,3 +225,8 @@ ACCOUNT_EMAIL_REQUIRED = True
 SOCIALACCOUNT_QUERY_EMAIL = True
 
 ACCOUNT_SESSION_REMEMBER = True
+
+#Facebook
+
+#1503370753508827
+#67e91e640c562e631692f8fe4c1f5cd2
