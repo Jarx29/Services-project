@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-$nrtil6^j==gs$_ufp0d)ord)p%7_-x6id_tnj_p@%0oov#h8u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['prueba-servicios.azurewebsites.net']
 
 
 # Application definition
@@ -128,9 +128,9 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = 'static/'
+STATICFILES_STORAGE='whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static','staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'services/static')]
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
