@@ -212,6 +212,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #{% provider_login_url provider.id openid=brand.openid_url process=process %}
 #{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}
 #<!--href={% url 'account_reset_password' %}-->
+#http://127.0.0.1:8000/google/login/callback/
 SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

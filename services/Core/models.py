@@ -32,7 +32,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=20, unique=True)
     fechaDeNacimiento = models.DateField
     password = models.CharField(max_length=100)
-    telefono = models.BigIntegerField(default=0, unique=True)
+    telefono = models.BigIntegerField(default=0)
     tipoCuenta = models.BooleanField(default=False)
     direccion = models.CharField(max_length=50)
     is_active = models.BooleanField(default=True)
