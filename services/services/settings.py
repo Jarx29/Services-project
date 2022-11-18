@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-$nrtil6^j==gs$_ufp0d)ord)p%7_-x6id_tnj_p@%0oov#h8u
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ["https://prueba-servicios.azurewebsites.net","http://localhost:8000","http://127.0.0.1:8000"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://prueba-servicios.azurewebsites.net",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
 
 
 # Application definition
@@ -152,10 +156,13 @@ MESSAGE_TAGS = {
 
 #Enviar corre
 
+EMAIL_BACKEND = 'django_smtp_ssl.SSLEmailBackend'
+#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
+EMAIL_PORT = 465
 EMAIL_HOST_USER = 'diamondsoftwaresolutions4@gmail.com'
 EMAIL_HOST_PASSWORD = 'chulnsffogixyguq'
+#'veiquwqrpwwrbndt'
 EMAIL_USE_TLS = True
 
 
@@ -177,33 +184,12 @@ SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
             'profile',
-            'email'
+            'email',
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
         },
         'OAUTH_PKCE_ENABLED': True,
-    },
-    'facebook': {
-        'METHOD': 'oauth2',
-        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
-        'SCOPE': ['email', 'public_profile'],
-        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
-        'INIT_PARAMS': {'cookie': True},
-        'FIELDS': [
-            'id',
-            'first_name',
-            'last_name',
-            'middle_name',
-            'name',
-            'name_format',
-            'picture',
-            'short_name'
-        ],
-        'EXCHANGE_TOKEN': True,
-        # 'LOCALE_FUNC': 'path.to.callable',
-        'VERIFIED_EMAIL': False,
-        'VERSION': 'v7.0',
     }
 }
 
