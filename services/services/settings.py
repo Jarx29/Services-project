@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-$nrtil6^j==gs$_ufp0d)ord)p%7_-x6id_tnj_p@%0oov#h8u
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://prueba-servicios.azurewebsites.net, http://localhost:8000']
+CSRF_TRUSTED_ORIGINS = ["https://prueba-servicios.azurewebsites.net","http://localhost:8000","http://127.0.0.1:8000"]
 
 
 # Application definition
