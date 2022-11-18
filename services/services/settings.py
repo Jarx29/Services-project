@@ -202,7 +202,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 #http://127.0.0.1:8000/google/login/callback/
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 
 ACCOUNT_LOGOUT_REDIRECT_URL = 'account_login'
 
