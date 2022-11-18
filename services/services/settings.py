@@ -26,7 +26,8 @@ SECRET_KEY = 'django-insecure-$nrtil6^j==gs$_ufp0d)ord)p%7_-x6id_tnj_p@%0oov#h8u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['prueba-servicios.azurewebsites.net']
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ["https://prueba-servicios.azurewebsites.net","http://localhost:8000","http://127.0.0.1:8000"]
 
 
 # Application definition
@@ -49,7 +50,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.facebook',
+    #'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.google',
 ]
 
@@ -176,8 +177,7 @@ SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'SCOPE': [
             'profile',
-            'email',
-            'nickname',
+            'email'
         ],
         'AUTH_PARAMS': {
             'access_type': 'online',
