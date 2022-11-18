@@ -21,3 +21,44 @@
      </a>
 </div>
 {% endfor %}
+
+
+
+{% load socialaccount %}
+
+{% load static %}
+
+{% get_providers as socialaccount_providers %}
+<meta name="google-signin-client_id" content="668449700605-fcrk48jsp1rmtko99cssqpnbhbg1bmr0.apps.googleusercontent.com">
+{% if provider.id == "openid" %}
+<div>
+  <a title="{{brand.name}}" 
+     class="socialaccount_provider {{provider.id}} {{brand.id}}" 
+     href="{% provider_login_url provider.id openid=brand.openid_url process="login" %}"
+     >Google</a>
+</div>
+{% endif %}
+<div class="my-2">
+  <div id="my-signin2"></div>
+<script>
+  function onSuccess(googleUser) {
+    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+  }
+  function onFailure(error) {
+    console.log(error);
+  }
+  function renderButton() {
+    gapi.signin2.render('my-signin2', {
+      'scope': 'profile email',
+      'width': 500,
+      'height': 50,
+      'longtitle': true,
+      'theme': 'dark',
+      'onsuccess': onSuccess,
+      'onfailure': onFailure
+    });
+  }
+</script>
+</div>
+
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>

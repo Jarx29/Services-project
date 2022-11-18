@@ -3,36 +3,26 @@
 {% load static %}
 
 {% get_providers as socialaccount_providers %}
-<meta name="google-signin-client_id" content="668449700605-fcrk48jsp1rmtko99cssqpnbhbg1bmr0.apps.googleusercontent.com">
+{% for provider in socialaccount_providers %}
 {% if provider.id == "openid" %}
+{% for brand in provider.get_brands %}
 <div>
   <a title="{{brand.name}}" 
      class="socialaccount_provider {{provider.id}} {{brand.id}}" 
-     href="{% provider_login_url provider.id openid=brand.openid_url process=process %}"
-     >Google</a>
+     href="{% provider_login_url provider.id openid=brand.openid_url process="connect" %}"
+     >{{brand.name}}</a>
 </div>
+{% endfor %}
 {% endif %}
-<div class="my-2">
-  <div id="my-signin2"></div>
-<script>
-  function onSuccess(googleUser) {
-    console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
-  }
-  function onFailure(error) {
-    console.log(error);
-  }
-  function renderButton() {
-    gapi.signin2.render('my-signin2', {
-      'scope': 'profile email',
-      'width': 500,
-      'height': 50,
-      'longtitle': true,
-      'theme': 'dark',
-      'onsuccess': onSuccess,
-      'onfailure': onFailure
-    });
-  }
-</script>
+<div class="my-3"  style="width: 250px; margin-inline-start:25%;">
+  <a title="{{provider.name}}" class="socialaccount_provider {{provider.id}}" 
+     href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}">
+     <img 
+      src="
+     {% with 'images/'|add:provider.name|add:'.png' as image %}
+      {% static image %}
+     {% endwith %}
+     " alt="{{ provider.name }}"  />
+     </a>
 </div>
-
-<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+{% endfor %}
