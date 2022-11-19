@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Core',
     'listings',
     'accounts',
+    'inquiry',
 
     'crispy_forms',
     'django.contrib.sites',

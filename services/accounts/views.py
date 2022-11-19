@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from Core.models import User
+from listings.models import Listing
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.core.mail import send_mail
@@ -130,8 +132,17 @@ def userlogin(request):
     else:
         return render(request, 'accounts/login.html')
 
+@login_required
 def userlogout(request):
     if request.method == 'POST':
         logout(request)
         messages.success(request, 'Sesion cerrada exitosamente')
         return redirect('login')
+
+@login_required
+def dashboard(request):
+    mylistings = Listing.objects.order_by('-list_date').filter(owner=request.user)
+    context = {
+        'listings': mylistings
+    }
+    return render(request, 'accounts/dashboard.html', context)
